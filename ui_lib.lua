@@ -5148,10 +5148,4 @@ local Toggles = getgenv().Toggles
 local Options = getgenv().Options
 local Flags = getgenv().Flags
 
-return ThemeManager
-return SaveManager
-return EspPreviewManager
-return Toggles
-return Options
-return Flags
-return Library
+return Library, ThemeManager, SaveManager, EspPreviewManager, Toggles, Options, Flags
