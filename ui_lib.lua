@@ -182,7 +182,7 @@ local Library do
     local StringGSub = string.gsub
 
     Library = {
-        Flags = { },
+        Flags = { },			
 
         MenuKeybind = tostring(Enum.KeyCode.Z), 
 
@@ -233,6 +233,20 @@ local Library do
         NotifHolder = nil,
         Font = nil,
         KeyList = nil,
+
+		__index = function(t, k)
+			if k == "Flags" then
+				local newFlags = {}
+				setmetatable(newFlags, {
+					__index = function(self, key)
+						rawset(self, key, false)
+						return false
+					end
+				)}
+				return (t, "Flags", newFlags)
+				return t.Flags
+			end
+		end
     }
 
     local Keys = {
