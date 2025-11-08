@@ -1838,6 +1838,8 @@ local Library do
                 end
             end
 
+			Library.Flags[Toggle.Flag] = Data.Default or false
+											
             function Toggle:Set(Bool)
                 Toggle.Value = Bool
 
@@ -2187,6 +2189,8 @@ local Library do
             })  Items["Value"]:AddToTheme({TextColor3 = "Text"})
         end
 
+		Library.Flags[Slider.Flag] = Data.Default or Data.Min or 0
+										
         function Slider:Set(Value)
             Slider.Value = MathClamp(Library:Round(Value, Data.Decimals), Data.Min, Data.Max)
 
@@ -4896,6 +4900,13 @@ local Library do
                 Count = Colorpicker.Count,
                 Alpha = Colorpicker.Alpha
             })
+
+			Library.Flags[Colorpicker.Flag] = {
+    		HexValue = "",
+    		Color = Data.Default or Color3.new(1,1,1),
+    		Alpha = Data.Alpha or 0,
+    		Flag = Colorpicker.Flag
+			}
 
             function Colorpicker:Set(Value, Alpha)
                 NewColorpicker:Set(Value, Alpha)
