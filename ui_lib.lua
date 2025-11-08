@@ -153,10 +153,6 @@ local ScriptCacheFolder = _Instancenew("Folder", workspace)
 ScriptCacheFolder.Name = "ScriptCacheFolder"
 CoreGui.ResetOnSpawn = false
 
-local ChatFrame = LocalPlayer.PlayerGui.GUI.Main.Chats
-ChatFrame.DisplayChat:Destroy()
-local ChatUI = ChatFrame.Parent
-
     local ProtectGui = protectgui or protect_gui or (syn and syn.protect_gui) or (function(p) 
 
     end);
