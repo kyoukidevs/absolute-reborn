@@ -17,7 +17,6 @@ local _GetAttribute = clonefunction(game.GetAttribute)
 
 local _GetPlayers = clonefunction(_GetService(game, "Players").GetPlayers)
 local _GetPlayerFromCharacter = clonefunction(_GetService(game, "Players").GetPlayerFromCharacter)
-local _GetValue = clonefunction(_GetService(game, "Stats").Network.ServerStatsItem['Data Ping'].GetValue)
 local _GetMouseLocation = clonefunction(_GetService(game, "UserInputService").GetMouseLocation)
 local _IsKeyDown = clonefunction(_GetService(game, "UserInputService").IsKeyDown)
 local _GetMouse = clonefunction(_GetService(game, "Players").LocalPlayer.GetMouse)
@@ -158,8 +157,6 @@ local ChatFrame = LocalPlayer.PlayerGui.GUI.Main.Chats
 ChatFrame.DisplayChat:Destroy()
 local ChatUI = ChatFrame.Parent
 
-
-do
     local ProtectGui = protectgui or protect_gui or (syn and syn.protect_gui) or (function(p) 
 
     end);
@@ -5138,7 +5135,6 @@ do
         end
     end
     getgenv().ConnectKeyPickerToToggle = ConnectKeyPickerToToggle
-end 
 
 local Library = getgenv().Library
 local ThemeManager = getgenv().ThemeManager
