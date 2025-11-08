@@ -2262,6 +2262,8 @@ local Library do
             Name = "Dropdown"
         }
 
+		Library.Flags[Dropdown.Flag] = Dropdown.Value
+
         local Items = { } do
             Items["Dropdown"] = Instances:Create("Frame", {
                 Parent = Data.Parent.Instance,
