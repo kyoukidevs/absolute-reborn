@@ -597,6 +597,12 @@
 					BorderSizePixel = 0,
 					BackgroundColor3 = rgb(255, 255, 255)
 				})
+
+                local UICorner = library:create("UICorner", {
+                    Parent = watermark_background,
+                    Name = "",
+                    CornerRadius = (0, 14)
+                })
 				
 				local UIGradient = library:create("UIGradient", {
 					Parent = watermark_background,
