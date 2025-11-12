@@ -1811,7 +1811,7 @@
 			--  
 
 			-- playerlist 
-				--[[local holder = library:panel({
+				local holder = library:panel({
 					name = "Playerlist", 
 					anchor_point = vec2(0, 0),
 					size = dim2(0, 529, 0, 445),
@@ -1826,7 +1826,7 @@
 				local playerlist = section:playerlist({})
 				section:dropdown({name = "Priority", items = {"Enemy", "Priority", "Neutral", "Friendly"}, default = "Neutral", flag = "PLAYERLIST_DROPDOWN", callback = function(text)
 					library.prioritize(text)
-				end})]]
+				end})
 			--  
 
 			return setmetatable(window, library)
