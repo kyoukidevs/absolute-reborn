@@ -995,7 +995,7 @@ do -- menu
             --
             local image_button = Instance_manager.new("ImageLabel", {
                     Name = page.name;
-                    Image = iconInfo[1];
+                    Image = iconInfo and iconInfo.assetId or "";
                     BackgroundTransparency = 1;
                     BorderSizePixel = 0;
                     Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
