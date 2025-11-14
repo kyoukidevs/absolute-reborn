@@ -992,7 +992,6 @@ do -- menu
             });
             --
             local image_button = Instance_manager.new("ImageLabel", {
-                if iconInfo then
                     Name = page.name;
                     Image = iconInfo.assetId;
                     BackgroundTransparency = 1;
@@ -1001,7 +1000,6 @@ do -- menu
                     Size = properties.size;
                     ImageColor3 = UI.themes.inactive;
                     Parent = tab_button;
-                end
             });
             --
             local text_button = Instance_manager.new("TextLabel", {
