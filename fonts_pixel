@@ -967,7 +967,7 @@ do -- menu
                     Parent = items.sgui,
                     Name = "",
                     AnchorPoint = Vector2.new(panel.anchor_point.X, panel.anchor_point.Y),
-                    Position = cfg.position,
+                    Position = panel.position,
                     Active = true,
                     BorderColor3 = Color3.fromRGB(0,0,0),
                     Size = panel.size,
