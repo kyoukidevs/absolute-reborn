@@ -276,7 +276,7 @@ do -- other
         end;
     end;
 
-    local function GetLucideIconData(iconName)
+    function GetLucideIconData(iconName)
         local iconData = LucideIcons["48px"] and LucideIcons["48px"][iconName]
         if iconData then
             return {
