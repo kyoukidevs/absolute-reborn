@@ -102,7 +102,7 @@ local UI = ({
     ui_key = Enum.KeyCode.Delete,
     menu_gui = nil,
     watermark_gui = nil,
-    themes = ({ accent = color3_rgb(131,135,250), risky = color3_rgb(85, 0, 0), background = color3_rgb(7,7,8), outline = color3_rgb(15,15,16), inactive = color3_rgb(69,69,70) }),
+    themes = ({ accent = color3_rgb(255,10,0), risky = color3_rgb(150, 0, 0), background = color3_rgb(7,7,8), outline = color3_rgb(15,15,16), inactive = color3_rgb(69,69,70) }),
     keys = {
         [Enum.KeyCode.LeftShift] = "L-SHIFT", [Enum.KeyCode.RightShift] = "R-SHIFT", [Enum.KeyCode.LeftControl] = "L-CTRL",
         [Enum.KeyCode.RightControl] = "R-CTRL", [Enum.KeyCode.LeftAlt] = "L-ALT", [Enum.KeyCode.RightAlt] = "R-ALT",
