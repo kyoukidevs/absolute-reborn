@@ -958,7 +958,6 @@ do -- menu
             if not properties then properties = {} end;
 
             local iconInfo = GetLucideIconData(properties.lucide)
-
             --
             local page = {
                 name = properties.Name or properties.name or "page",
@@ -993,7 +992,7 @@ do -- menu
             });
             --
             local image_button = Instance_manager.new("ImageLabel", {
-                if properties.lucide and iconInfo then
+                if iconInfo then
                     Name = page.name;
                     Image = iconInfo.assetId;
                     BackgroundTransparency = 1;
