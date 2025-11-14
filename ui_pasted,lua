@@ -958,6 +958,8 @@ do -- menu
             if not properties then properties = {} end;
 
             local iconInfo = GetLucideIconData(properties.lucide)
+
+            if not iconInfo then properties = {} end;
             --
             local page = {
                 name = properties.Name or properties.name or "page",
