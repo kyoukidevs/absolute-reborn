@@ -976,14 +976,14 @@ do -- menu
             });
             --
             local image_button = Instance_manager.new("ImageLabel", {
-                    Name = page.name;
-                    Image = page.icon;
-                    BackgroundTransparency = 1;
-                    BorderSizePixel = 0;
-                    Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
-                    Size = properties.size;
-                    ImageColor3 = UI.themes.inactive;
-                    Parent = tab_button;
+                Name = page.name;
+                Image = page.icon;
+                BackgroundTransparency = 1;
+                BorderSizePixel = 0;
+                Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
+                Size = properties.size;
+                ImageColor3 = UI.themes.inactive;
+                Parent = tab_button;
             });
             --
             local text_button = Instance_manager.new("TextLabel", {
