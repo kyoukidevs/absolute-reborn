@@ -956,6 +956,9 @@ do -- menu
     do -- pages
         function UI:tabs(properties)
             if not properties then properties = {} end;
+
+            local iconInfo = GetLucideIconData(properties.lucide)
+
             --
             local page = {
                 name = properties.Name or properties.name or "page",
@@ -990,18 +993,15 @@ do -- menu
             });
             --
             local image_button = Instance_manager.new("ImageLabel", {
-                if properties.lucide then
-                    local iconInfo = GetLucideIconData(properties.lucide)
-                    if iconInfo then
-                        Name = page.name;
-                        Image = iconInfo.assetId;
-                        BackgroundTransparency = 1;
-                        BorderSizePixel = 0;
-                        Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
-                        Size = properties.size;
-                        ImageColor3 = UI.themes.inactive;
-                        Parent = tab_button;
-                    end
+                if properties.lucide and iconInfo then
+                    Name = page.name;
+                    Image = iconInfo.assetId;
+                    BackgroundTransparency = 1;
+                    BorderSizePixel = 0;
+                    Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
+                    Size = properties.size;
+                    ImageColor3 = UI.themes.inactive;
+                    Parent = tab_button;
                 end
             });
             --
