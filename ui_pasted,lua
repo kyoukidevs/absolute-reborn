@@ -44,6 +44,8 @@ local get_mouse = lplr:GetMouse();
 -- modules
 Instance_manager = framework.modules.instance_manager
 signals = framework.modules.signals
+-- lucide
+local LucideIcons = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/icons.lua"))()
 -- fonts
 local create_font = {}
 function create_font:register(path, options)
@@ -273,6 +275,18 @@ do -- other
             return true;
         end;
     end;
+
+    local function GetLucideIconData(iconName)
+        local iconData = LucideIcons["48px"] and LucideIcons["48px"][iconName]
+        if iconData then
+            return {
+                assetId = "rbxassetid://" .. iconData[1],
+                rectSize = iconData[2],
+                rectOffset = iconData[3]
+            }
+        end
+        return nil
+    end
     --
     blur_effect = cloneref(Instance.new("BlurEffect", lighting));
     black_bg = Instance_manager.new("TextButton", {
@@ -942,6 +956,8 @@ do -- menu
     do -- pages
         function UI:tabs(properties)
             if not properties then properties = {} end;
+
+            local iconInfo = GetLucideIconData(properties.lucide)
             --
             local page = {
                 name = properties.Name or properties.name or "page",
@@ -950,7 +966,7 @@ do -- menu
                 sections = {},
                 pages = {},
                 elements = {},
-                icon = properties.icon or properties.Icon or "",
+                icon = properties.lucide or "",
                 size = properties.size or properties.Size or udim2(0, 60, 0, 60),
             };
             --
@@ -977,7 +993,7 @@ do -- menu
             --
             local image_button = Instance_manager.new("ImageLabel", {
                 Name = page.name;
-                Image = page.icon;
+                Image = iconInfo.assetId;
                 BackgroundTransparency = 1;
                 BorderSizePixel = 0;
                 Position = udim2(0.5, -properties.size.X.Offset / 2, 0.5, -properties.size.Y.Offset / 2);
