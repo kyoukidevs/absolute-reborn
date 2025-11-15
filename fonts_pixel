@@ -3098,18 +3098,18 @@ do -- menu
                             Keybind.Callback(true)
                         end
                     end)
-                    --[[if not Keybind.Ignore then
+                    if not Keybind.Ignore then
                         ListValue:SetVisible(true)
-                    end]]
+                    end
                 elseif Keybind.Mode == "Toggle" then
                     State = not State
                     if Keybind.Flag then
                         UI.flags[Keybind.Flag] = State
                     end
                     Keybind.Callback(State)
-                    --[[if not Keybind.Ignore then
+                    if not Keybind.Ignore then
                         ListValue:SetVisible(State)
-                    end]]
+                    end
                 end
             end
         end)
@@ -3126,9 +3126,9 @@ do -- menu
                             if Keybind.Callback then
                                 Keybind.Callback(false)
                             end
-                            --[[if not Keybind.Ignore then
+                            if not Keybind.Ignore then
                                 ListValue:SetVisible(false)
-                            end]]
+                            end
                         end
                     end
                 end
