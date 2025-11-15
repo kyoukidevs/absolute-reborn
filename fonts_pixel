@@ -1080,8 +1080,14 @@ do -- menu
                         KName.Visible = State;
                     end;
 
-                    function KeyValue:Update(NKey, NewName)
+                    function KeyValue:Update(NKey, NewName, Active)
                         KName.Text = string.format("%s: [%s]", NewName, tostring(NKey))
+
+						if Active then
+							KName.TextColor3 = color3_rgb(0, 255, 0)
+						else
+							KName.TextColor3 = color3_rgb(255,255,255)
+						end
                     end
 
                     return KeyValue
@@ -3020,10 +3026,10 @@ do -- menu
                     end
                     local text = "None"
                     Value.Text = text
-                    --[[if not Keybind.Ignore then
+                    if not Keybind.Ignore then
                         ListValue:Update(text, Keybind.Name)
-                    end]]
-                    --Outline.Size = udim2(0, Value.TextBounds.X + 10, 1.9, 0)
+                    end
+                    Outline.Size = udim2(0, Value.TextBounds.X + 10, 1.9, 0)
                 elseif newkey ~= nil then
                     Key = newkey
                     if Keybind.UseKey then
@@ -3035,26 +3041,26 @@ do -- menu
                     local text = (UI.keys[newkey] or tostring(newkey):gsub("Enum.KeyCode.", ""))
 
                     Value.Text = text
-                    --[[if not Keybind.Ignore then
+                    if not Keybind.Ignore then
                         ListValue:Update(text, Keybind.Name)
-                    end]]
-                    --Outline.Size = udim2(0, Value.TextBounds.X + 10, 1.9, 0)
+                    end
+                    Outline.Size = udim2(0, Value.TextBounds.X + 10, 1.9, 0)
                 end
                 UI.flags[Keybind.Flag .. "_KEY"] = newkey
             elseif table.find({ "Always", "Toggle", "Hold" }, newkey) then
                 if not Keybind.UseKey then
                     UI.flags[Keybind.Flag .. "_KEY STATE"] = newkey
                     Keybind.Mode = newkey
-                    --[[if not Keybind.Ignore then
+                    if not Keybind.Ignore then
                         ListValue:Update((UI.keys[Key] or tostring(Key):gsub("Enum.KeyCode.", "")), Keybind.Name)
-                    end]]
+                    end
                     if Keybind.Mode == "Always" then
                         State = true
                         if Keybind.Flag then
                             UI.flags[Keybind.Flag] = State
                         end
                         Keybind.Callback(true)
-                        --ListValue:SetVisible(true)
+                        ListValue:SetVisible(true)
                     end
                 end
             else
