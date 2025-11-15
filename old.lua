@@ -1018,7 +1018,7 @@ do -- menu
                 --ImageColor3 = Color3.fromRGB(255, 255, 255);
                 BorderSizePixel = 0;
                 ZIndex = 9999;
-                Image = "http://www.roblox.com/asset/?id=160416816";
+                Image = "http://www.roblox.com/asset/?id=80976283536367";
             });
 
             UI:AttachTheme(imagetoptab, { ImageColor3 = "accent" })
