@@ -2818,7 +2818,7 @@ do -- menu
         local State, Key = false
         local ListValue;
         if not Keybind.Ignore then
-            ListValue = library.keybind_list:NewKey(Keybind.State, Keybind.Name)
+            ListValue = UI.keybind_list:NewKey(Keybind.State, Keybind.Name)
         end
         --
         local NewBind = Instance_manager.new("Frame", {
