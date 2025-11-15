@@ -3015,8 +3015,8 @@ do -- menu
             end
         end)
         --
-        UI.flags[Keybind.Flag .. "_KEY"] = Keybind.State
-        UI.flags[Keybind.Flag .. "_KEY STATE"] = Keybind.Mode
+        library.flags[Keybind.Flag .. "_KEY"] = Keybind.State
+        library.flags[Keybind.Flag .. "_KEY STATE"] = Keybind.Mode
         flags[Keybind.Flag] = set
         flags[Keybind.Flag .. "_KEY"] = set
         flags[Keybind.Flag .. "_KEY STATE"] = set
@@ -3030,12 +3030,12 @@ do -- menu
 end;
 do -- open/close
     signals.connection(uis.InputBegan, function(input)
-        if input.KeyCode == UI.ui_key then
+        if input.KeyCode == library.ui_key then
             pcall(function()
-                UI.autoload = not UI.autoload
-                UI.menu_gui.Enabled = UI.autoload
-                black_bg.Visible = UI.autoload
-                blur_effect.Size = UI.autoload and 20 or 0
+                library.autoload = not library.autoload
+                library.menu_gui.Enabled = library.autoload
+                black_bg.Visible = library.autoload
+                blur_effect.Size = library.autoload and 20 or 0
             end);
         end;
     end);
@@ -3059,10 +3059,10 @@ function UI:Configs(tab)
     --
     tab:button({ Name = "create", Callback = function()
         pcall(function()
-            local config_name = UI.flags["cfg_name"];
+            local config_name = library.flags["cfg_name"];
             if config_name ~= "" and not isfile("CONFIGS/" .. config_name .. ".cfg") then
-                writefile("CONFIGS/" .. config_name .. ".cfg", UI:GetConfig());
-                UI:Notification("Created config [".. config_name .."].", 5, Color3.new(0, 1, 1))
+                writefile("CONFIGS/" .. config_name .. ".cfg", library:GetConfig());
+                library:Notification("Created config [".. config_name .."].", 5, Color3.new(0, 1, 1))
                 cfg_list()
             end;
         end);
@@ -3072,8 +3072,8 @@ function UI:Configs(tab)
         pcall(function()
             local selected_config = UI.flags["cfg_list"];
             if selected_config then
-                writefile("CONFIGS/" .. selected_config .. ".cfg", UI:GetConfig());
-                UI:Notification("Saved config [".. selected_config .."].", 5, Color3.new(1, 1, 0))
+                writefile("CONFIGS/" .. selected_config .. ".cfg", library:GetConfig());
+                library:Notification("Saved config [".. selected_config .."].", 5, Color3.new(1, 1, 0))
                 cfg_list()
             end;
         end);
@@ -3081,10 +3081,10 @@ function UI:Configs(tab)
     --
     tab:button({ Name = "load", Callback = function()
         pcall(function()
-            local selected_config = UI.flags["cfg_list"];
+            local selected_config = library.flags["cfg_list"];
             if selected_config then
-                UI:LoadConfig(readfile("CONFIGS/" .. selected_config .. ".cfg"));
-                UI:Notification("Loaded config [".. selected_config .."].", 5, Color3.new(0, 1, 0))
+                library:LoadConfig(readfile("CONFIGS/" .. selected_config .. ".cfg"));
+                library:Notification("Loaded config [".. selected_config .."].", 5, Color3.new(0, 1, 0))
                 cfg_list()
             end;
         end);
@@ -3092,10 +3092,10 @@ function UI:Configs(tab)
     --
     tab:button({ Name = "delete", Callback = function()
         pcall(function()
-            local selected_config = UI.flags["cfg_list"];
+            local selected_config = library.flags["cfg_list"];
             if selected_config then
                 delfile("CONFIGS/" .. selected_config .. ".cfg");
-                UI:Notification("Deleted config [".. selected_config .."].", 5, Color3.new(1, 0, 0))
+                library:Notification("Deleted config [".. selected_config .."].", 5, Color3.new(1, 0, 0))
                 cfg_list()
             end;
         end);
@@ -3105,7 +3105,7 @@ end;
 
 function UI:Themes(tab)
     tab:dropdown({name = "Themes", description = "Custom themes for Menu", options = {"Default", "Blue", "Quantum", "Pornhub", "Fatality", "GameSense"}, default = "Default", flag = "theme_list", callback = function(state)
-        UI:LoadTheme(state);
+        library:LoadTheme(state);
     end}); 
 end;
 
@@ -3118,8 +3118,8 @@ function UI:Extra(tab)
 end;
 
 function UI:Menu(tab)
-    tab:keybind({name = "Menu Key", description = "Open/Hide", default = UI.ui_key, usekey = true, ignore = true, callback = function(state) UI.ui_key = state end});
-    tab:toggle({name = "Keybinds", description = "Shows keybinds", default = true, flag = "show keybinds", callback = function(state) UI.keybind_list:SetVisible(state) end});
+    tab:keybind({name = "Menu Key", description = "Open/Hide", default = UI.ui_key, usekey = true, ignore = true, callback = function(state) library.ui_key = state end});
+    tab:toggle({name = "Keybinds", description = "Shows keybinds", default = true, flag = "show keybinds", callback = function(state) library.keybind_list:SetVisible(state) end});
     tab:dropdown({name = "Menu Font", description = "Custom fonts for Menu", options = {"Proggy", "Templeos", "Pixel", "Rubik",}, default = "Rubik", flag = "Menu Fonts", callback = function(state)
         local fonts = {
             ["Proggy"] = {fonts.proggytiny, 9},
