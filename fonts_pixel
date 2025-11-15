@@ -130,6 +130,41 @@ local UI = ({
         ping = 0
     },
 });
+function UI:LoadTheme(themeName)
+    if self.themes[themeName] then
+        self.currentTheme = themeName;
+        for obj, data in pairs(self.instancemap) do
+            UI:AttachTheme(obj, data.Properties);
+        end;
+    end;
+end;
+
+function UI:AttachTheme(obj, props)
+    local activeTheme = self.currentTheme or "Default";
+
+    self.instancemap[obj] = { Instance = obj, Properties = props };
+
+    for property, themeKey in pairs(props) do
+        if self.themes[activeTheme] and self.themes[activeTheme][themeKey] then
+            local targetValue = self.themes[activeTheme][themeKey]
+
+            if property == "ImageColor3" or property == "TextColor3" or property == "ScrollBarImageColor3" then
+                if obj[property] ~= targetValue then
+                    tween_service:Create(obj, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+                        [property] = targetValue
+                    }):Play()
+                end
+            else
+                obj[property] = targetValue
+            end
+        end
+    end
+end
+function UI:GetSelectedThemeAndAccent()
+    local activeTheme = self.currentTheme or "Default";
+    local accentColor = self.themes[activeTheme].accent ;
+    return activeTheme, accentColor;
+end;
 --
 local flags = {};
 UI.__index = UI;
