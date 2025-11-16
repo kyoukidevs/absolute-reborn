@@ -1031,7 +1031,7 @@ do -- menu
                 Name.BorderSizePixel = 0
                 Name.Size = UDim2.new(1, 0, 0, 25)
                 Name.FontFace = UI.font
-                Name.Text = "KeyBind List"
+                Name.Text = "Keybind List"
                 Name.TextStrokeTransparency = 0
                 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
                 Name.TextSize = UI.font_size
@@ -2823,7 +2823,7 @@ do -- menu
         };
         local State, Key = false
         local ListValue;
-        if not Keybind.Ignore then
+        if not Keybind.Ignore and UI.flags[Keybind.Flag] then
             ListValue = UI.keybind_list:NewKey(Keybind.State, Keybind.Name)
         end
         --
@@ -2967,7 +2967,7 @@ do -- menu
             Size = udim2(1, 0, 0.333, 0),
             ZIndex = 2,
             FontFace = UI.font,
-            Text = "Hold",
+            Text = "Broken",
             TextColor3 = Keybind.Mode == "Hold" and color3_rgb(255,255,255) or color3_rgb(145,145,145),
             TextSize = UI.font_size,
             TextStrokeTransparency = 0
