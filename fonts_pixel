@@ -2967,7 +2967,7 @@ do -- menu
             Size = udim2(1, 0, 0.333, 0),
             ZIndex = 2,
             FontFace = UI.font,
-            Text = "Broken",
+            Text = "Hold",
             TextColor3 = Keybind.Mode == "Hold" and color3_rgb(255,255,255) or color3_rgb(145,145,145),
             TextSize = UI.font_size,
             TextStrokeTransparency = 0
