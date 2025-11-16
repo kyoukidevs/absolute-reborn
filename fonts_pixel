@@ -2823,7 +2823,7 @@ do -- menu
         };
         local State, Key = false
         local ListValue;
-        if not Keybind.Ignore and UI.flags[Keybind.Flag] then
+        if not Keybind.Ignore then
             ListValue = UI.keybind_list:NewKey(Keybind.State, Keybind.Name)
         end
         --
